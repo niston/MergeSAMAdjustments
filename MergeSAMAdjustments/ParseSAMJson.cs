@@ -12,8 +12,6 @@ namespace MergeSAMAdjustments
     {
         public void Parse(List<NiNode> bonesList, string jsonFilePath)
         {
-            //string filePath = @"C:\Program Files (x86)\Steam\steamapps\common\Fallout 4.new\Data\F4SE\Plugins\SAF\Adjustments\SAM-Legs.json";
-
             // local vars
             NiNode boneNiNode = new NiNode();
             string boneName = string.Empty;
