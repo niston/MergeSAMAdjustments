@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
-using System.Numerics;
 
 // SAM Adjustment Merge Tool by niston
 
@@ -16,9 +15,6 @@ namespace MergeSAMAdjustments
             NiNode boneNiNode = new NiNode();
             string boneName = string.Empty;
             SAMBoneDescriptor boneDescriptor = new SAMBoneDescriptor();
-            Vector3 boneLoc = new Vector3();
-            Quaternion boneOri = new Quaternion();
-            float boneScale = 1;
 
             // read SAM json file into string
             string jsonText = File.ReadAllText(jsonFilePath);
