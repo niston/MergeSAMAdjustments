@@ -15,7 +15,6 @@ namespace MergeSAMAdjustments
             NiNode boneNiNode = new NiNode();
             string boneName = string.Empty;
             SAMBoneDescriptor boneDescriptor = new SAMBoneDescriptor();
-            //---
 
             // read SAM json file into string
             string jsonText = File.ReadAllText(jsonFilePath);
