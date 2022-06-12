@@ -40,7 +40,7 @@ namespace MergeSAMAdjustments
                 }
                 else
                 {
-                    // access bone already NiNode in list
+                    // access bone already in list
                     boneNiNode = bonesList[boneIndex];
                 }
 

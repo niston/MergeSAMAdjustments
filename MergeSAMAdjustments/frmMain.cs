@@ -79,11 +79,11 @@ namespace MergeSAMAdjustments
             {
                 int curIndex = dgvSourceFiles.SelectedRows[0].Index;
                 if (curIndex > 0)
-                {
+                {                                 
                     SourceFiles.Move(curIndex, curIndex - 1);
                     dgvSourceFiles.DataSource = SourceFiles;
-                    dgvSourceFiles.Rows[curIndex].Selected = false;
-                    dgvSourceFiles.Rows[curIndex - 1].Selected = true;
+                    dgvSourceFiles.ClearSelection();
+                    dgvSourceFiles.Rows[curIndex - 1].Selected = true;                    
                 }                
             }
         }
@@ -94,10 +94,10 @@ namespace MergeSAMAdjustments
             {
                 int curIndex = dgvSourceFiles.SelectedRows[0].Index;
                 if (curIndex < SourceFiles.Count - 1)
-                {
+                {                    
                     SourceFiles.Move(curIndex, curIndex + 1);
                     dgvSourceFiles.DataSource = SourceFiles;
-                    dgvSourceFiles.Rows[curIndex].Selected = false;
+                    dgvSourceFiles.ClearSelection();
                     dgvSourceFiles.Rows[curIndex + 1].Selected = true;
                 }
             }
