@@ -27,7 +27,8 @@ namespace MergeSAMAdjustments
 
                 // write bone settings
                 SAMBoneDescriptor boneDesc = new SAMBoneDescriptor();
-                boneDesc.UpdateDescriptor(bone);
+                bone.UpdateDescriptor(boneDesc);
+                //boneDesc.UpdateDescriptor(bone);
                 json.Append(JsonConvert.SerializeObject(boneDesc));
 
                 // append comma if not last bone
