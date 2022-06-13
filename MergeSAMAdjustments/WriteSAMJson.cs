@@ -21,14 +21,13 @@ namespace MergeSAMAdjustments
                 c += 1;
 
                 // write bone name
-                json.Append("\"");
+                json.Append("    \"");
                 json.Append(bone.Name);
                 json.Append("\" : ");
 
                 // write bone settings
                 SAMBoneDescriptor boneDesc = new SAMBoneDescriptor();
                 bone.UpdateDescriptor(boneDesc);
-                //boneDesc.UpdateDescriptor(bone);
                 json.Append(JsonConvert.SerializeObject(boneDesc));
 
                 // append comma if not last bone
