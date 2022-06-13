@@ -20,10 +20,10 @@ namespace MergeSAMAdjustments
             string jsonText = File.ReadAllText(jsonFilePath);
 
             // parse SAM json toplevel from string
-            JObject o = JObject.Parse(jsonText);
+            JObject toplevelObject = JObject.Parse(jsonText);
 
             // process all bones in json
-            foreach (JProperty property in o.Properties())
+            foreach (JProperty property in toplevelObject.Properties())
             {
                 // get name from toplevel and deserialize sublevel into SAMBoneDescriptor object
                 boneName = property.Name;

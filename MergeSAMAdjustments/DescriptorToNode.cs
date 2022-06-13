@@ -1,5 +1,6 @@
-﻿using System;
-using System.Numerics;
+﻿using System.Numerics;
+
+// SAM Adjustment Merge Tool by niston
 
 namespace MergeSAMAdjustments
 {

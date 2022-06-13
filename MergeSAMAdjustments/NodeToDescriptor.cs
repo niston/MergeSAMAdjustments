@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Numerics;
 
+// SAM Adjustment Merge Tool by niston
+
 namespace MergeSAMAdjustments
 {
     public static class NodeToDescriptor
