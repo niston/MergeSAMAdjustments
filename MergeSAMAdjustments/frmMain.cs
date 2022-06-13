@@ -124,11 +124,27 @@ namespace MergeSAMAdjustments
             ParseSAMJson parser = new ParseSAMJson();
             foreach (string sourceFile in SourceFiles)
             {
-                parser.Parse(NodesList, sourceFile);
+                try
+                {
+                    parser.Parse(NodesList, sourceFile);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message, "SAM Adjustment Merge Tool - ParseSAMJson", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
             WriteSAMJson writer = new WriteSAMJson();            
-            writer.Write(NodesList, txtOutputPath.Text);
+            try
+            {
+                writer.Write(NodesList, txtOutputPath.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "SAM Adjustment Merge Tool - WriteSAMJson", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // done
             MessageBox.Show(this, "Wrote merged file to: " + txtOutputPath.Text, "SAM Adjustment Merge Tool", MessageBoxButtons.OK, MessageBoxIcon.Information);
