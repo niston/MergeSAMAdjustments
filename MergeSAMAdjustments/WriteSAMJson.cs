@@ -11,9 +11,11 @@ namespace MergeSAMAdjustments
     {
         public void Write(List<NiNode> bonesList, string outputFile)
         {
+            
             StringBuilder json = new StringBuilder();
             json.AppendLine("{");
-
+            json.AppendLine("\"name\" : \"" + Path.GetFileNameWithoutExtension(outputFile) + "\",");
+            json.AppendLine("\"transforms\" : {");
             int c = 0;
             foreach (NiNode bone in bonesList)
             {
@@ -34,6 +36,8 @@ namespace MergeSAMAdjustments
                 json.AppendLine((c < bonesList.Count) ? "," : string.Empty);
             }
 
+            json.AppendLine("},");
+            json.AppendLine("\"version\" : 1");
             json.AppendLine("}");
 
             // write json to output file

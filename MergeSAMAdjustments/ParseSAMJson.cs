@@ -26,26 +26,36 @@ namespace MergeSAMAdjustments
             foreach (JProperty property in toplevelObject.Properties())
             {
                 // get name from toplevel and deserialize sublevel into SAMBoneDescriptor object
-                boneName = property.Name;
-                boneDescriptor = JsonConvert.DeserializeObject<SAMBoneDescriptor>(property.Value.ToString());
-
-                // find bone in list or add new?
-                int boneIndex = bonesList.FindIndex(o => o.Name == boneName);
-                if (boneIndex < 0)
+                if (property.Name == "name") { continue; }
+                if (property.Name == "version") { continue; }
+                if (property.Name == "transforms")
                 {
-                    // bone not in NiNode list yet, add new
-                    boneNiNode = new NiNode();
-                    boneNiNode.Name = boneName;
-                    bonesList.Add(boneNiNode);
-                }
-                else
-                {
-                    // access bone already in list
-                    boneNiNode = bonesList[boneIndex];
-                }
+                    JObject transformObjects = JObject.Parse(property.Value.ToString());
+                    foreach (JProperty transform in transformObjects.Properties())
+                    {
+                        boneName = transform.Name;
+                        boneDescriptor = JsonConvert.DeserializeObject<SAMBoneDescriptor>(transform.Value.ToString());
 
-                // update NiNode from SAMBoneDescriptor
-                boneDescriptor.UpdateNiNode(boneNiNode);
+                        // find bone in list or add new?
+                        int boneIndex = bonesList.FindIndex(o => o.Name == boneName);
+                        if (boneIndex < 0)
+                        {
+                            // bone not in NiNode list yet, add new
+                            boneNiNode = new NiNode();
+                            boneNiNode.Name = boneName;
+                            bonesList.Add(boneNiNode);
+                        }
+                        else
+                        {
+                            // access bone already in list
+                            boneNiNode = bonesList[boneIndex];
+                        }
+
+                        // update NiNode from SAMBoneDescriptor
+                        boneDescriptor.UpdateNiNode(boneNiNode);
+
+                    }
+                }
             }
         }
     }
